@@ -41,12 +41,17 @@ const mensagensDeErro = {
 	dataNascimento: {
 		valueMissing: 'O campo de data de nascimento não pode estar vazio',
 		customError: 'Ahhh, não deu certo! É necessário ser maior que 18 anos para se cadastrar :('
+	},
+	cpf: {
+		valueMissing: 'O campo de CPF não pode estar vazio.',
+		customError: 'O CPF digitado não é válido'
 	}	
 };
 
 // Objeto com os tipos de validadores do formulário:
 const validadores = {
-	dataNascimento:input => validaDataNascimento(input)
+	dataNascimento:input => validaDataNascimento(input),
+	cpf:input => validaCPF(input)
 };
 
 // Função que irá percorrer o vetor tipos de Erro e verifica se esse tipo de erro está no validity do input, retornando true ou false. Sendo true, a variável mensagem passa a ser o valor de erro dentro da propriedade do tipo de input do erro, no objeto mensagens de erro:
@@ -88,4 +93,77 @@ function maiorQue18(data) {
 	const dataAtual = new Date(); // Date sem parâmetros retorna a data atual.
 	const dataMais18 = new Date(data.getUTCFullYear() + 18, data.getUTCMonth(), data.getUTCDate()); // cada 'data.getUTC' retorna o ano, mês e dia da data passada à função, os quais devem ser tratados nessa ordem: aaaa mm dd.
 	return dataMais18 <= dataAtual;
+};
+
+// Para validação do CPF, vamos primeiro formatar o input para termos apenas números, independentemente do formato de digitação usado pelo usuário. A partir disso podemos checar se uma das duas funções de verificações implementadas retornam false:
+
+function validaCPF(input) {
+	const cpfFormatado = input.value.replace(/\D/g, '');
+	let mensagem = "";
+	if(!checaCPFRepetido(cpfFormatado) || !checaEstruturaCPF(cpfFormatado) || !checaTamanhoCPF(cpfFormatado)) {
+		mensagem = 'O CPF digitado não é válido';
+	};
+	input.setCustomValidity(mensagem);
+}
+
+// Primeira checagem para o CPF é verificar se este possui apenas números repetidos:
+function checaCPFRepetido(cpf) {
+	const valoresRepetidos = [
+		'00000000000',
+		'11111111111', 
+		'22222222222',
+		'33333333333',
+		'44444444444',
+		'55555555555',
+		'66666666666',
+		'77777777777',
+		'88888888888',
+		'99999999999'
+	];
+	let cpfValido = true;
+	valoresRepetidos.forEach(valor => {
+		if (valor == cpf) {
+			cpfValido = false;
+		}
+	});
+	return cpfValido;
+}
+
+// Segunda checagem é verificar a estrutura, ou seja, se os dígitos verificadores estão corretos:
+function checaEstruturaCPF(cpf) {
+	const multiplicador = 10;
+	return checaDigitoVerificador(cpf, multiplicador);
+};
+
+// Calculo matemático: para o 1° digito verificador, somar os 9 primeiros dígitos multiplicados de 10 até 2 (10 * 1°) + (9 * 2°) + (8 * 3°) + ... + (2 * 9°) e aplicar a fórmula em confirma dígito. Para o 2° digito multipicador, somar os 10 primeiros dígitos multiplicados de 11 até 2 (11 * 1°) + (10 * 2°) + (9 * 3°) + ... + (3 * 10°), e aplicar na fórmula confirma dígito:
+function checaDigitoVerificador(cpf, multiplicador) {
+	if(multiplicador >= 12) {
+		return true;
+	};
+	let multiplicadorInicial = multiplicador;
+	let soma = 0;
+	const cpfSemDigitos = cpf.substr (0, multiplicador - 1).split('');
+	const digitoVerificador = cpf.charAt(multiplicador - 1);
+
+	for(let contador = 0; multiplicadorInicial > 1; multiplicadorInicial--) {
+		soma = soma + cpfSemDigitos[contador] * multiplicadorInicial;
+		contador++;
+	}
+
+	// Se o 1° dígito estiver correto, chamamos recursivamente a função para o 2° dígito verificador:
+	if(digitoVerificador == confirmaDigito(soma)) {
+		return checaDigitoVerificador(cpf, multiplicador + 1);
+	};
+
+	return false;
+
+};
+
+function confirmaDigito(soma) {
+	return (11 - (soma % 11));
+};
+
+// Terceira checagem para o CPF é verificar se foi inserido mais ou menos do que 11 dígitos:
+function checaTamanhoCPF(cpf) {
+	return cpf.length == 11;
 };
