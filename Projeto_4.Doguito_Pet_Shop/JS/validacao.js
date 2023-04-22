@@ -48,14 +48,25 @@ const mensagensDeErro = {
 	},	
 	cep: {
 		valueMissing: 'O campo de CEP não pode estar vazio.',
-		patternMismatch: 'O CEP digitado não é válido'
-	}	
+		patternMismatch: 'O CEP digitado não é válido',
+		customError: 'Não foi possível buscar seu CEP :('
+	},
+	logradouro: {
+		valueMissing: 'O campo de logradouro não pode estar vazio.'
+	},
+	cidade: {
+		valueMissing: 'O campo de cidade não pode estar vazio.'
+	},
+	estado: {
+		valueMissing: 'O campo de estado não pode estar vazio.'
+	}				
 };
 
 // Objeto com os tipos de validadores do formulário:
 const validadores = {
 	dataNascimento:input => validaDataNascimento(input),
-	cpf:input => validaCPF(input)
+	cpf:input => validaCPF(input),
+	cep:input => recuperarCEP(input)
 };
 
 // Função que irá percorrer o vetor tipos de Erro e verifica se esse tipo de erro está no validity do input, retornando true ou false. Sendo true, a variável mensagem passa a ser o valor de erro dentro da propriedade do tipo de input do erro, no objeto mensagens de erro:
@@ -171,3 +182,44 @@ function confirmaDigito(soma) {
 function checaTamanhoCPF(cpf) {
 	return cpf.length == 11;
 };
+
+// Primeiro vamos garantir que CEP seja somente de números (removendo o hífen, caso necessário) e dps chamamos a função fetch que connecta com a API passando a url da viacep (com o cep informado) e um objeto 'options', com as configurações da requisição (method GET - pois queremos obter dados da API, mode cors - pois é uma requisição entre APIs, headers - objeto que queremos de resposta, definindo seu tipo, nesse caso, um app json em chartset utf8). Só chamamos 'fetch' se o cep estiver correto, ou seja, sem a propriedade validity do intput (cep) ter nenhum dos erros declarados (patternMismatch ou valueMissing):
+function recuperarCEP(input) {
+	const cep = input.value.replace(/\D/g, '');
+	const url = `https://viacep.com.br/ws/${cep}/json/`;
+	const options = {
+		method: 'GET',
+		mode: 'cors',
+		headers: {
+			'content-type': 'application/json;charset=utf-8'
+		}
+	}
+
+	// Se o formato de CEP estiver correto, chamamos 'fetch' para se connectar com a API, depois convertemos a resposta em um arquivo json e depois obtemos os dados desse objeto (informações retornadas da API). Caso de algum erro, o retorno será um objeto 'erro' true.
+	if(!input.validity.patternMismatch && !input.validity.valueMissing){
+		fetch(url, options).then(
+			response => response.json()
+		).then(
+			data => {
+				if(data.erro) {
+					input.setCustomValidity('Não foi possível buscar seu CEP :(');
+					return;
+				}
+				input.setCustomValidity('');
+				preencheCamposComCEP(data);
+				return;
+				}
+		)
+	}
+
+}
+
+function preencheCamposComCEP(data) {
+	const logradouro = document.querySelector('[data-tipo="logradouro"]');
+	const cidade = document.querySelector('[data-tipo="cidade"]');
+	const estado = document.querySelector('[data-tipo="estado"]');
+
+	logradouro.value = data.logradouro;
+	cidade.value = data.localidade;
+	estado.value = data.uf;
+}
