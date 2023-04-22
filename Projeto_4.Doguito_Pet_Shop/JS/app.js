@@ -5,6 +5,17 @@ const inputs = document.querySelectorAll('input');
 
 // Para cada input da lista chamamos a função de validação, no momento de envio (blur), passando o evento.target:
 inputs.forEach(input => {
+   if(input.dataset.tipo === 'preco') {
+      SimpleMaskMoney.setMask(input, {
+         prefix: 'R$ ',
+         fixed: true,
+         fractionDigits: 2,
+         decimalSeparator: ',',
+         thousandsSeparator: '.',
+         cursor: 'end'
+      })
+   }
+
    input.addEventListener('blur', (evento) => {
       valida(evento.target)
    });
