@@ -11,18 +11,26 @@ import { clienteService } from "../service/cliente-service.js";
    // Buscando os campos html do nome e email:
    const inputNome = document.querySelector('[data-nome]');
    const inputEmail = document.querySelector('[data-email]');
-
-   // Chamando a função que pega o id e retorna um objeto 'dados', o nome e o email então são 'jogados' para os campos html para o preeenchimento automático:
-   const dados = await clienteService.detalhaCliente(id)
-   inputNome.value = dados.nome;
-   inputEmail.value = dados.email;
-
+   try {
+      // Chamando a função que pega o id e retorna um objeto 'dados', o nome e o email então são 'jogados' para os campos html para o preeenchimento automático:
+      const dados = await clienteService.detalhaCliente(id)
+      inputNome.value = dados.nome;
+      inputEmail.value = dados.email;
+   } catch(erro) {
+      console.log(erro)
+      window.location.href = "../telas/erro.html"
+   }
    //A partir do formulário html podemos adicionar que ao envio, chamaremos a função atualizaCliente  passando o id, nome e email preenchidos na página de edição, e então direcionamos para a página de edição concluida:
    const formulario = document.querySelector('[data-form]');
    formulario.addEventListener('submit', async (evento) => {
       evento.preventDefault()
-      await clienteService.atualizaCliente(id, inputNome.value, inputEmail.value)
-      window.location.href = "../telas/edicao_concluida.html"
+      try {
+         await clienteService.atualizaCliente(id, inputNome.value, inputEmail.value)
+         window.location.href = "../telas/edicao_concluida.html"
+      } catch(erro) {
+         console.log(erro)
+         window.location.href = "../telas/erro.html"
+      }
    });
 })()
 
