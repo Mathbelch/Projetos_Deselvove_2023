@@ -24,21 +24,22 @@ const criaNovaLinha = (nome, email, id) => {
 const tabela = document.querySelector('[data-tabela]');
 
 // Quando houver clique, verificaremos se o botão clicado foi o botão de excluir cliente. Se sim, iremos chamar a função removeCliente passando o id do cliente para remove-lo do BD. Para remove-lo do HTML vamos buscar o elemento pais mais próximo do botão (justamente a tr que quero remover), então pegaremos seu id, usamos esse id para o remove cliente excluir da api, e depois usamos o remove() para excluir toda a tr com esse id do html:
-tabela.addEventListener('click', (evento) => {
+tabela.addEventListener('click', async(evento) => {
    let identificaBotao = evento.target.className === 'botao-simples botao-simples--excluir';
    if(identificaBotao) {
       const linhaCliente = evento.target.closest('[data-id]')
       let id = linhaCliente.dataset.id
-      clienteService.removeCliente(id)
-      .then(() => {
-         linhaCliente.remove()
-      })
+      await clienteService.removeCliente(id)
+      linhaCliente.remove()
    }
 });
 
 // Chamando a função listaClientes, que retornará uma promisse, e com essa vamos percorrer cada elemento do array de resultados, chamar a função de criar linha e inserir essa linha na tabela HTML:
-clienteService.listaClientes().then(data => {
-   data.forEach(elemento => {
-      tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
-      });
-});
+const render = async () => {
+   const listaClientes = await clienteService.listaClientes()
+   listaClientes.forEach(elemento => {
+         tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
+         });
+};
+
+render();
