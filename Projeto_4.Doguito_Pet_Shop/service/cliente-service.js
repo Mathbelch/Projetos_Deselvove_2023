@@ -33,11 +33,38 @@ const removeCliente = (id) => {
    })
 };
 
+// Função similar a listaCliente, mas agora quero achar o nome e o email a partir do id, retornando a resposta convertida para string:
+const detalhaCliente = (id) => {
+   return fetch(`http://localhost:3000/profile/${id}`)
+   .then(resposta => {
+      return resposta.json() 
+   })
+};
+
+// Função irá fazer uma requisição com método PUT para poder alterar dados, recebendo o id, nome e email e retornando um objeto json com o novo nome e email:
+const atualizaCliente = (id, nome, email) => {
+   return fetch(`http://localhost:3000/profile/${id}`, {
+      method: 'PUT',
+      headers: {
+         'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+         nome: nome,
+         email: email
+      })
+   })
+   .then(resposta => {
+      return resposta.json()
+   })
+};
+
 // Objeto exportando funções do cliente-server:
 export const clienteService = {
    listaClientes,
    criaCliente,
-   removeCliente
+   removeCliente,
+   detalhaCliente,
+   atualizaCliente
 }
 
 
