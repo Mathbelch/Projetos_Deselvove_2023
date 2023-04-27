@@ -1,8 +1,8 @@
 import { clienteService } from "../service/cliente-service.js";
 
-// Montando uma função com template string para inserir os dados de clientes no HTML como uma lista, contendo o nome e email dos clientes:
+// Montando uma função com template string para inserir os dados de clientes no HTML como uma lista, contendo o nome e email dos clientes. Vamos incluir o id para conseguirmos depois fazer a manipulação desse cliente de forma mais facil:
 
-const criaNovaLinha = (nome, email) => {
+const criaNovaLinha = (nome, email, id) => {
    const linhaNovoCliente = document.createElement('tr');
    const conteudo = `
       <td class="td" data-td>${nome}</td>
@@ -15,15 +15,29 @@ const criaNovaLinha = (nome, email) => {
          </td>
          `;
    linhaNovoCliente.innerHTML = conteudo;
+   linhaNovoCliente.dataset.id = id;
    return linhaNovoCliente;
 };
 
 // Pegando a área html de lista_clientes onde serão inseridos os dados:
 const tabela = document.querySelector('[data-tabela]');
 
+// Quando houver clique, verificaremos se o botão clicado foi o botão de excluir cliente. Se sim, iremos chamar a função removeCliente passando o id do cliente para remove-lo do BD. Para remove-lo do HTML vamos buscar o elemento pais mais próximo do botão (justamente a tr que quero remover), então pegaremos seu id para isso:
+tabela.addEventListener('click', (evento) => {
+   let identificaBotao = evento.target.className === 'botao-simples botao-simples--excluir';
+   if(identificaBotao) {
+      const linhaCliente = evento.target.closest('[data-id]')
+      let id = linhaCliente.dataset.id
+      clienteService.removeCliente(id)
+      .then(() => {
+         linhaCliente.remove()
+      })
+   }
+});
+
 // Chamando a função listaClientes, que retornará uma promisse, e com essa vamos percorrer cada elemento do array de resultados, chamar a função de criar linha e inserir essa linha na tabela HTML:
 clienteService.listaClientes().then(data => {
    data.forEach(elemento => {
-      tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
+      tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
       });
 });
