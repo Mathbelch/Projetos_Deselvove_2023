@@ -22,7 +22,7 @@ footer {
 }
 
 ul {
-   color: rgb(187, 50, 50);;
+   color: aqua;
    padding-top: 2em;
    padding-bottom: 2em;
    padding-left: 10em;
@@ -30,14 +30,17 @@ ul {
 
 li {
    padding-bottom: 1em;
+   align: center;
 }
 
 .but {
    margin-right: 1em;
+   border: 0.1em solid white;
+   border-radius: 5%;
 }
 
 .but:link, .but:visited {
-   background-color: rgb(187, 50, 50);
+   background-color: rgb(57, 100, 100);
    color: white;
    padding: 15px 25px;
    text-align: center;
@@ -51,7 +54,7 @@ li {
 
 
 .title {
-   color: rgb(155, 155, 155);
+   color: rgb(194, 194, 194);
    font-size: 1.5em;
 }
 
