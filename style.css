@@ -1,0 +1,61 @@
+body {
+   background-color: #282828;
+}
+
+footer {
+   color:#C0C0C0;
+   font-size: 0.75em;
+   text-align: center;
+   font-style: italic;
+   position: bottom;
+}
+
+.pageTitle {
+   padding-top: 3em;
+   padding-right: 0;
+   color: white;
+   text-align: center;
+   font-size: 1.25em;
+   font-weight: bold;
+   width: 100%;
+
+}
+
+ul {
+   color: rgb(187, 50, 50);;
+   padding-top: 2em;
+   padding-bottom: 2em;
+   padding-left: 10em;
+}
+
+li {
+   padding-bottom: 1em;
+}
+
+.but {
+   margin-right: 1em;
+}
+
+.but:link, .but:visited {
+   background-color: rgb(187, 50, 50);
+   color: white;
+   padding: 15px 25px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+ }
+ 
+ .but:hover, .but:active {
+   background-color: rgb(210, 50, 50);
+ }
+
+
+.title {
+   color: rgb(155, 155, 155);
+   font-size: 1.5em;
+}
+
+p {
+   color: white;
+   padding-right: 10em;
+}
