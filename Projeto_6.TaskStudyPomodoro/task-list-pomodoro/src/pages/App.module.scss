@@ -2,23 +2,23 @@
    display: grid;
    grid-template-rows: min-content min-content auto;
    grid-template-areas: 
-   "nova-tarefa"
+   "new-task"
    "cronometro"
-   "tarefas"
+   "tasks"
    ;
    row-gap: 24px;
    min-width: 320px;
    min-height: calc(100vh - 32px);
    width: 100%;
-   padding: 32px;
+   padding: 64px;
    box-sizing: border-box;
    border-radius: 10px;
    background-color: #171717;
  
-   @media screen and (min-width:1280px)  {
+   @media screen and (min-width:1380px)  {
      grid-template-areas: 
-     "nova-tarefa tarefas"
-     "cronometro tarefas"
+     "new-task tasks"
+     "cronometro tasks"
      ;
      column-gap: 64px;
      grid-template-rows: min-content min-content;
@@ -27,4 +27,10 @@
      align-content: center;
      padding: 64px;
    }
+
+   @media screen and (max-width:380px)  {
+    column-gap: 32px;
+    padding: 32px;
+   }
  }
+
