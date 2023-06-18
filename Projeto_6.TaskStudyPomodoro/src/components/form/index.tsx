@@ -50,7 +50,7 @@ class Form extends React.Component<{
 
                </input>
             </div>
-            <Button> 
+            <Button type='submit'> 
                Add Task
             </Button>
          </form>
