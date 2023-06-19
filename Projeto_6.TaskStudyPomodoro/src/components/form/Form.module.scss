@@ -12,10 +12,11 @@
      flex-direction: column;
      width: 100%;
      margin-bottom: 16px;
- 
+    
      label {
        margin-bottom: 8px;
        font-size: 1.25rem;
+       width: auto;
      }
  
      input {
@@ -30,34 +31,40 @@
        &::placeholder {
          color: #BFBFBF;
        }
-
       
      }
+
    }
- 
-   @media screen and (min-width: 1000px) {
-     flex-direction: row;
-     flex-wrap: wrap;
-     justify-content: space-around;
-     font-size: 2.25rem;
-     padding: 24px;
-     box-sizing: border-box;
- 
-     .inputContainer {
-       width: calc(75% - 12px);
- 
-       &:last-of-type {
-         width: 25%;
-       }
- 
-       label {
-         font-size: 2rem;
-       }
- 
-       input {
-         height: 100%;
-         font-size: 1.75rem;
-       }
-     }
+
+   .inputContainer2 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+
+    .inputContainer {
+      margin: 24px;
+      width: 20%;
+    }
+
+   }
+
+   .total {
+    margin-top: 0.5em;
+    font-size: 1.3em;
+   }
+
+   @media screen and (max-width: 730px){
+    .inputContainer2 {
+      flex-direction: column;
+      width: auto;
+      justify-content: center;
+
+      .inputContainer {
+        margin: 2px;
+        width: 100%;
+      }
+    }
    }
  }

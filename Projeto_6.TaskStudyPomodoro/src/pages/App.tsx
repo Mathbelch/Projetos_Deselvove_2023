@@ -33,6 +33,10 @@ function App() {
     }
   }
 
+  function abortTask() {
+    
+  }
+
   return (
     <div className={Style.AppStyle}>
       <Form setTasks={setTasks}/>

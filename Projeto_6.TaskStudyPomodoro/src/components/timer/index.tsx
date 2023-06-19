@@ -15,7 +15,7 @@ export default function Timer({ selected, endTask }: Props) {
    useEffect(() => {
       if(selected?.time) {
          setTime(timeToSeconds(selected.time)) 
-      }
+      } 
    }, [selected]);
 
    function regressiveCount(counter: number = 0) {
@@ -26,6 +26,11 @@ export default function Timer({ selected, endTask }: Props) {
          } 
          endTask();
       }, 1000);
+      
+   }
+   
+   function pomodoroTime(time: number = 0) {
+      regressiveCount(time);
    }
 
    return (
@@ -34,7 +39,7 @@ export default function Timer({ selected, endTask }: Props) {
          <div className={Style.clockWrapper}> 
             <Clock time={time}/>
          </div>
-         <Button onClick={() => regressiveCount(time)}>
+         <Button onClick={() => pomodoroTime(time)}>
             Start!
          </Button>
       </div>

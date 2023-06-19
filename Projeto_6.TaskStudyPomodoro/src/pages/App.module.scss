@@ -15,22 +15,23 @@
    border-radius: 10px;
    background-color: #171717;
  
-   @media screen and (min-width:1380px)  {
-     grid-template-areas: 
-     "new-task tasks"
-     "timer tasks"
-     ;
-     column-gap: 64px;
-     grid-template-rows: min-content min-content;
-     grid-template-columns: 750px 300px;
-     justify-content: center;
-     align-content: center;
-     padding: 64px;
-   }
+  //  @media screen and (min-width:1380px)  {
+  //    grid-template-areas: 
+  //    "new-task tasks"
+  //    "timer tasks"
+  //    ;
+  //    column-gap: 64px;
+  //    grid-template-rows: min-content min-content;
+  //    grid-template-columns: 750px 300px;
+  //    justify-content: center;
+  //    align-content: center;
+  //    padding: 64px;
+  //  }
 
-   @media screen and (max-width:380px)  {
+   @media screen and (max-width:430px)  {
     column-gap: 32px;
     padding: 32px;
+    
    }
  }
 
