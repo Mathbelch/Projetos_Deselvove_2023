@@ -12,7 +12,7 @@ export default function Searcher({ search, setSearch }: Props) {
    <div className={styles.searcher}>
       <input 
       value={search} 
-      onChange={event => setSearch(event.target.value)} />
+      onChange={event => setSearch(event.target.value)} placeholder="'Search" />
       <CgSearch size={20} color='#4c4d5e' />
    </div>
    )
