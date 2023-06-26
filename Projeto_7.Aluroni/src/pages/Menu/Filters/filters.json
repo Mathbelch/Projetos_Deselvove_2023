@@ -1,18 +1,18 @@
 [
    {
-     "label": "Massas",
+     "label": "Pastas",
      "id": 1
    },
    {
-     "label": "Carnes",
+     "label": "Meet",
      "id": 2
    },
    {
-     "label": "Combos",
+     "label": "Combs",
      "id": 3
    },
    {
-     "label": "Veganos",
+     "label": "Vegans",
      "id": 4
    }
  ]

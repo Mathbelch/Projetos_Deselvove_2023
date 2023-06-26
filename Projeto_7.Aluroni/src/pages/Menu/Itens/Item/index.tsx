@@ -31,7 +31,7 @@ export default function Item(props: Props) {
                   Serves {serving} {serving === 1 ? "person" : "people"}
                </div>
                <div className={styles.item__value}>
-                  R${price.toFixed(2)}
+                  ${price.toFixed(2)}
                </div>
             </div>
          </div>

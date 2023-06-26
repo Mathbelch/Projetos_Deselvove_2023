@@ -1,7 +1,7 @@
 [
    {
-     "title": "Macarrão mediterrâneo",
-     "description": "Macarrão spaghetti com frutos-do-mar e especíarias, especialidade da cozinha. Atenção: Contém camarão e outros frutos-do-mar!",
+     "title": "Mediterranean Pasta",
+     "description": "Spaghetti pasta with seafood and spices, specialty of the kitchen. Caution: Contains shrimp and other seafood!",
      "photo": "/assets/plates/macarrao_mediterraneo.png",
      "size": 400,
      "serving": 2,
@@ -13,8 +13,8 @@
      }
    },
    {
-     "title": "Macarrão da casa",
-     "description": "Macarrão com frutos-do-mar e especíarias, especialidade da cozinha. Atenção: Contém camarão e outros frutos-do-mar!",
+     "title": "Alluroni Pasta",
+     "description": "Pasta with seafood and spices, specialty of the kitchen. Caution: Contains shrimp and other seafood!",
      "photo": "/assets/plates/macarrao_da_casa.png",
      "size": 400,
      "serving": 2,
@@ -26,8 +26,8 @@
      }
    },
    {
-     "title": "Macarrão com chilli",
-     "description": "Macarrão fetuccine com molho de chilli e especiárias.",
+     "title": "Chilli Pasta",
+     "description": "Fettuccine pasta with chilli sauce and spices.",
      "photo": "/assets/plates/macarrao_com_chilli.png",
      "size": 350,
      "serving": 1,
@@ -39,8 +39,8 @@
      }
    },
    {
-     "title": "Salada da casa com salmão grelhado",
-     "description": "Salada da casa (alface, rúcula, cenoura) com salmão.",
+     "title": "Alluroni Salad with Grilled Salmon",
+     "description": "House salad (lettuce, arugula, carrot) with salmon.",
      "photo": "/assets/plates/salada_da_casa.png",
      "size": 450,
      "serving": 1,
@@ -52,8 +52,8 @@
      }
    },
    {
-     "title": "Bife com batatas",
-     "description": "Bife de boi (150g) na chapa, com batatas fritas. Acompanha arroz e molhos.",
+     "title": "Steak with Potatoes",
+     "description": "Beef steak (150g) on ​​the plate, with fries. Comes with rice and sauces.",
      "photo": "/assets/plates/bife_com_batatas.png",
      "size": 550,
      "serving": 2,
@@ -65,8 +65,8 @@
      }
    },
    {
-     "title": "Picanha picada com legumes e massa",
-     "description": "400g de picanha picada, com legumes grelhados e massa escolhida pelo cliente.",
+     "title": "Chopped Rump Steak with Vegetables and Pasta",
+     "description": "400g of chopped picanha, with grilled vegetables and pasta chosen by the customer.",
      "photo": "/assets/plates/picanha_picada.png",
      "size": 850,
      "serving": 3,
@@ -78,8 +78,8 @@
      }
    },
    {
-     "title": "Lasagna vegana (carne de soja)",
-     "description": "Lasagna 100% vegana feita com carne de soja e massa especial.",
+     "title": "Lasagna Vegana (Soy Meat)",
+     "description": "100% vegan Lasagna made with soy meat and special pasta.",
      "photo": "/assets/plates/lasagna_vegana.png",
      "size": 350,
      "serving": 1,
@@ -91,8 +91,8 @@
      }
    },
    {
-     "title": "Salada especial",
-     "description": "Salada com abacate, manga, alface, grão de bico e muito mais.",
+     "title": "Special Salad",
+     "description": "Salad with avocado, mango, lettuce, chickpeas and more.",
      "photo": "/assets/plates/salada_especial.png",
      "size": 350,
      "serving": 1,
@@ -104,8 +104,8 @@
      }
    },
    {
-     "title": "Almôndegas",
-     "description": "Porção de almôndegas com sour cream, cebola e tempêros. Acompanha arroz ou massa.",
+     "title": "Super Meatballs",
+     "description": "Portion of meatballs with sour cream, onion and spices. Comes with rice or pasta.",
      "photo": "/assets/plates/almondegas.png",
      "size": 740,
      "serving": 3,
