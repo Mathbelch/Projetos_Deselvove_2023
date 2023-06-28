@@ -10,19 +10,14 @@ export default function Menu() {
   const [filter, setFilter] = useState<number | null>(null);
   const [sorter, setSorter] = useState<SorterOptions>('');
   return(
-    <main>
-      <header className={styles.header}>
-        <div className={styles.header__text}>The house of code and pasta</div>
-      </header>
-      <section className={styles.menu}>
-        <h3 className={styles.menu__header}>Menu</h3>
-        <Searcher search={search} setSearch={setSearch}/>
-        <div className={styles.menu__filters}>
-          <Filters filter={filter} setFilter={setFilter}/>
-          <Sorter sorter={sorter} setSorter={setSorter}/>
-        </div>
-        <Itens search={search} filter={filter} sorter={sorter}/>
-      </section>
-    </main>
+    <section className={styles.menu}>
+      <h3 className={styles.menu__header}>Menu</h3>
+      <Searcher search={search} setSearch={setSearch}/>
+      <div className={styles.menu__filters}>
+        <Filters filter={filter} setFilter={setFilter}/>
+        <Sorter sorter={sorter} setSorter={setSorter}/>
+      </div>
+      <Itens search={search} filter={filter} sorter={sorter}/>
+    </section>
   );
 }
