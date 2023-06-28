@@ -1,5 +1,6 @@
 import styles from './PatternPage.module.scss';
 import { Outlet } from 'react-router-dom';
+import stylesTheme from 'styles/Theme.module.scss';
 
 export default function PatternPage() {
   return (
@@ -7,7 +8,7 @@ export default function PatternPage() {
       <header className={styles.header}>
         <div className={styles.header__text}>The house of code and pasta</div>
       </header>
-      <div>
+      <div className={stylesTheme.container}>
         <Outlet />
       </div>
     </>

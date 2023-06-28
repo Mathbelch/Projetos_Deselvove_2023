@@ -1,9 +1,5 @@
 @import 'styles/variables';
-.title {
-  color: $dark;
-  font-size: 3rem;
-  margin-bottom: 30px;
-}
+
 .suggestions {
   border-radius: 2px;
   display: flex;
@@ -36,7 +32,7 @@
     }
   }
 }
-.ourCasa {
+.ourHome {
   margin-bottom: 100px;
   position: relative;
   width: 100%;
