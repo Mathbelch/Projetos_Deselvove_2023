@@ -1,6 +1,7 @@
 import menu from 'data/menu.json';
 import styles from './Init.module.scss';
 import stylesTheme from 'styles/Theme.module.scss';
+import home from 'assets/home.png';
 
 export default function Init() {
   let sugestedMeals = [...menu];
@@ -18,6 +19,13 @@ export default function Init() {
           </button>
         </div>
       ))}
+      </div>
+      <h3 className={stylesTheme.title}>Our Home</h3>
+      <div className={styles.ourHome}>
+        <img src={home} alt="Aluroni's house" />
+        <div className={styles.ourHome__address}>
+          Adress, 1100 <br /> <br /> Ville - SP
+        </div>
       </div>
     </section>
   );
