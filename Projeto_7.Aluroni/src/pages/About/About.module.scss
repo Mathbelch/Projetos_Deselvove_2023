@@ -1,0 +1,36 @@
+.aboutUs {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   gap: 10px;
+   margin-bottom: 30px;
+   &__image {
+    height: 70%;
+    width: 60%;
+   }
+   &__text {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     font-size: 1.5rem;
+     font-weight: bold;
+     text-align: justify;
+    > p {
+       font-family: 'Josefin Sans', sans-serif;
+     }
+   }
+ }
+ .images {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   justify-content: space-around;
+   &__image {
+     width: auto;
+     padding-left: 10%;
+     img {
+       border-radius: 5px;
+       width: 70%;
+     }
+   }
+ }
