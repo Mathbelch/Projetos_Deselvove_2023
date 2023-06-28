@@ -6,6 +6,7 @@ import PatternPage from 'components/PatternPage';
 import About from 'pages/About';
 import Footer from 'components/Footer';
 import NotFound from 'pages/NotFound';
+import Meal from 'pages/Meal';
 
 export default function appRouter() {
   return (
@@ -20,6 +21,7 @@ export default function appRouter() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/about" element={<About />} />
             <Route path='*' element={<NotFound />}/>
+            <Route path='meal/:id' element={<Meal />}/>
           </Route>
 
         </Routes>

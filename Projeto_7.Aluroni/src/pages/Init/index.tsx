@@ -2,10 +2,19 @@ import menu from 'data/menu.json';
 import styles from './Init.module.scss';
 import stylesTheme from 'styles/Theme.module.scss';
 import home from 'assets/home.png';
+import { useNavigate } from 'react-router-dom';
+import { Meal } from 'types/Meal';
 
 export default function Init() {
   let sugestedMeals = [...menu];
   sugestedMeals = sugestedMeals.sort(() => 0.5 - Math.random()).splice(0,3);
+
+  const navigate = useNavigate();
+
+  function redirectToMeals(meal: Meal) {
+    navigate(`/meal/${meal.id}`, {state: { meal }});
+  }
+
   return (
     <section>
       <h3 className={stylesTheme.title}>Our suggestions:</h3>
@@ -14,7 +23,7 @@ export default function Init() {
           <div className={styles.suggestion__image}>
             <img src={item.photo} alt={item.title} />
           </div>
-          <button className={styles.suggestion__button}>
+          <button className={styles.suggestion__button} onClick={() => redirectToMeals(item)}>
             See More
           </button>
         </div>
