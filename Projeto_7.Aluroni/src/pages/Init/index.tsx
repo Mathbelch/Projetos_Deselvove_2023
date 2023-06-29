@@ -7,7 +7,7 @@ import { Meal } from 'types/Meal';
 
 export default function Init() {
   let sugestedMeals = [...menu];
-  sugestedMeals = sugestedMeals.sort(() => 0.5 - Math.random()).splice(0,3);
+  sugestedMeals = sugestedMeals.sort(() => 0.5 - Math.random()).splice(0,4);
 
   const navigate = useNavigate();
 

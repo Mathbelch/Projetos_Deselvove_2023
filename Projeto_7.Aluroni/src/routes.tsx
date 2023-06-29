@@ -13,20 +13,16 @@ export default function appRouter() {
     <main className='container'>
       <Router>
         <MenuLogo />
-
         <Routes>
-
           <Route path="/" element={<PatternPage />}>
             <Route index element={<Init />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/about" element={<About />} />
-            <Route path='*' element={<NotFound />}/>
-            <Route path='meal/:id' element={<Meal />}/>
           </Route>
-
+          <Route path='meal/:id' element={<Meal />}/>
+          <Route path='*' element={<NotFound />}/>
         </Routes>
         <Footer />
-
       </Router>
     </main>
   );
