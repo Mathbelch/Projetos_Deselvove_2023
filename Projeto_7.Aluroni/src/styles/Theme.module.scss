@@ -2,15 +2,15 @@
 @import "./breakpoints";
 
 .container {
-  padding: 50px $padding-horiz;
+  padding: 10px $padding-horiz;
   @media (max-width: $desktop_xsm) {
-    padding: 50px $padding-horiz-mobile;
+    padding: 10px $padding-horiz-mobile;
   }
   @media (min-width: $desktop_xsm) and (max-width: $desktop_sm) {
-    padding: 50px $padding-horiz-sm;
+    padding: 10px $padding-horiz-sm;
   }
   @media (min-width: $desktop_sm) and (max-width: $desktop_md) {
-    padding: 50px $padding-horiz-md;
+    padding: 10px $padding-horiz-md;
   }
 }
 .title {

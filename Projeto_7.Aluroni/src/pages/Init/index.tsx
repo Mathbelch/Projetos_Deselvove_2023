@@ -7,7 +7,7 @@ import { Meal } from 'types/Meal';
 
 export default function Init() {
   let sugestedMeals = [...menu];
-  sugestedMeals = sugestedMeals.sort(() => 0.5 - Math.random()).splice(0,4);
+  sugestedMeals = sugestedMeals.sort(() => 0.5 - Math.random()).splice(0,3);
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export default function Init() {
 
   return (
     <section>
-      <h3 className={stylesTheme.title}>Our suggestions:</h3>
+      <h3 className={stylesTheme.title}>Our suggestions</h3>
       <div className={styles.suggestions}>{sugestedMeals.map(item => (
         <div key={item.id} className={styles.suggestion}>
           <div className={styles.suggestion__image}>

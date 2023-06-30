@@ -5,11 +5,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .suggestion {
   &__image {
-    width: 300px;
+    width: 200px;
     margin-bottom: 10px;
     img {
       border-radius: 8px;
