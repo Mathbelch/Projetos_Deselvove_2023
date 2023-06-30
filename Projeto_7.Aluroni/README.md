@@ -29,4 +29,9 @@ Implementação da página do restaurante fícticio 'Aluroni' por meio da biblio
    <li><i>public/assets</i>: Para arquivos estatícos que devem ser renderizados dinâmicamente, como as imagens dos pratos.</li>
 </ul>
 
+<p>Versão Final da página:</p>
+
+https://github.com/Mathbelch/Projetos_Deselvove_2023/assets/109366042/ed9bce3a-92d5-43a7-9e4e-13f4c090ed6e
+
+
 
