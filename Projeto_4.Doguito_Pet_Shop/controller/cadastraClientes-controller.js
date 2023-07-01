@@ -10,9 +10,9 @@ formulario.addEventListener('submit', async (evento) => {
    const email = evento.target.querySelector('[data-email]').value;
    try {
       await clienteService.criaCliente(nome, email)
-      window.location.href = '../telas/cadastro_concluido.html'
+      window.location.href = './cadastro_concluido.html'
    } catch(erro) {
       console.log(erro)
-      window.location.href = "../telas/erro.html"
+      window.location.href = "../erro.html"
    }
 })

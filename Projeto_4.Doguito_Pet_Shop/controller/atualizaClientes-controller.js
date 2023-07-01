@@ -18,7 +18,7 @@ import { clienteService } from "../service/cliente-service.js";
       inputEmail.value = dados.email;
    } catch(erro) {
       console.log(erro)
-      window.location.href = "../telas/erro.html"
+      window.location.href = "../erro.html"
    }
    //A partir do formulário html podemos adicionar que ao envio, chamaremos a função atualizaCliente  passando o id, nome e email preenchidos na página de edição, e então direcionamos para a página de edição concluida:
    const formulario = document.querySelector('[data-form]');
@@ -26,7 +26,7 @@ import { clienteService } from "../service/cliente-service.js";
       evento.preventDefault()
       try {
          await clienteService.atualizaCliente(id, inputNome.value, inputEmail.value)
-         window.location.href = "../telas/edicao_concluida.html"
+         window.location.href = "./edicao_concluida.html"
       } catch(erro) {
          console.log(erro)
          window.location.href = "../telas/erro.html"
