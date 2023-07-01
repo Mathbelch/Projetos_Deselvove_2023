@@ -1,0 +1,23 @@
+.imageInit {
+   width: 40%;
+   padding: 1.5em 0;
+}
+
+.title {
+   font-size: 2em;
+   line-height: 1.3em;
+   font-weight: 700;
+}
+
+.destaque {
+   color: #ff6f64;
+}
+
+.destaque2 {
+   color: #55a6ff;
+}
+
+.userInfo {
+   font-size: 1.4em;
+   font-family: 500;
+}

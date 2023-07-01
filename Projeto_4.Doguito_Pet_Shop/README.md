@@ -57,7 +57,7 @@ Desenvolver aplicação simples para controle administrativo interno de lojas da
       <li>atualizaCliente (PUT) -> Recebe o id, nome e email e retorna um objeto json com o novo nome e email, salvo no BD;</li>
    </ul>
 
-<p><b>obs:</b> Para simular hospedagem API em servidor local: npx json-server --watch db.json, rodar com browser sync ou liveServer. Dependência usada: "json-server": "^0.16.2". Node(v18.16.0) e npm(v9.5.1).
+<p><b>obs:</b> Para simular hospedagem API em servidor local: npx json-server --watch db.json, rodar com browser sync ou liveServer. Dependência usada: "json-server": "^0.16.2". Node(v18.16.0) e npm(v9.5.1). Usabilidade não afetada até 605px de largura.
 
 ## Versão Final da Página:
 
