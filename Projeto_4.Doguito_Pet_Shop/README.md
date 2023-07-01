@@ -11,8 +11,6 @@ Desenvolver aplicação simples para controle administrativo interno de lojas da
    <li>O usuário (atendente da Pet Shop) deve ser capaz de usar o sistema para poder cadastrar clientes no Clube de Vantagens Doguito, devendo-se preencher o formulário com informaçoes do cliente: nome, email, senha (o cliente irá ser solicitado para alterar a senha depois), data de nascimento, cpf e endereço. O usuário não terá acesso a essa base de dados, sendo restrita a equipe coordenadora do Clube de Vantagens;</li>
    <li>O usuário (atendente da Pet Shop) deve ser capaz de usar o sistema para poder visualizar e manipular o banco de dados básico de clientes cadastrados em sua loja, podendo inserir novos clientes (nome e email) e também editar e excluir os clientes já cadastrados.</li>
    <li>Deve-se deixar uma página HTML chamada 'Pets' para posterior implementação, com um aviso de que a página está em construção;</li>
-   <li></li>
-   <li></li>
 </ul>
 
 ## Estrutura do projeto:
@@ -59,6 +57,8 @@ Desenvolver aplicação simples para controle administrativo interno de lojas da
       <li>atualizaCliente (PUT) -> Recebe o id, nome e email e retorna um objeto json com o novo nome e email, salvo no BD;</li>
    </ul>
 
-<p><b>obs:</b> Para simular hospedagem API em servidor local: npx json-server --watch db.json, rodar com browser sync ou liveServer. Dependência usada: "json-server": "^0.16.2". 
+<p><b>obs:</b> Para simular hospedagem API em servidor local: npx json-server --watch db.json, rodar com browser sync ou liveServer. Dependência usada: "json-server": "^0.16.2". Node(v18.16.0) e npm(v9.5.1).
+
+## Versão Final da Página:
 
 
