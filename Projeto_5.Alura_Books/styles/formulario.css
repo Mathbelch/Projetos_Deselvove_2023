@@ -41,6 +41,12 @@
 
 .formulario__dupla {
     display: flex;
+    align-items: center;
+}
+
+.regiaoDDD {
+    margin-top: 25px;
+    color: darkblue;
 }
 
 .formulario__botao {
@@ -76,7 +82,7 @@
     color: var(--vermelho);
 }
 
-#erro {
+#erro, #erroNome, #erroData, #erroCel, #erroMail, #erroCPF {
     padding-top: 0.5em;
     padding-left: 0.5em;
     color: red;

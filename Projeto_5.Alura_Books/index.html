@@ -73,12 +73,13 @@
     <main class="principal">
         <h2 class="principal__titulo">Dados do cadastro</h2>
 
-        <form class="principal__formulario" id="formulario" target="_blank"
+        <form class="principal__formulario" id="formulario" target="_blank" 
             onsubmit="location.replace('./cadastro-finalizado.html')">
             <h3 class="principal__subtitulo">Dados pessoais</h3>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="nome">Nome Completo</label>
-                <input name="nome" id="nome" class="campo__escrita" required />
+                <input name="nome" id="nome" class="campo__escrita" placeholder="Digite seu nome completo" pattern="[a-zA-ZçÁáÊêÉéÓóÍí]{1}[a-zA-ZçÁáÊêÉéÓóÍí]+\s[a-zA-Z\sçÁáÊêÉéÓóÍí]+" title="É necessário informar seu nome completo para efetuar o cadastro" autocomplete="off" required />
+                <div id="erroNome"></div>
             </div>
             <div class="formulario__dupla">
                 <div class="formulario__campo">
@@ -90,11 +91,21 @@
                     <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita"
                         required />
                 </div>
+                <p class="regiaoDDD" id="DDD"></p>
             </div>
+            <div id="erroData"></div>
+            <div id="erroCel"></div>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="email">E-mail</label>
                 <input name="email" id="email" type="email" class="campo__escrita" required />
+                <div id="erroMail"></div>
             </div>
+            <div class="formulario__campo">
+                <label class="campo__etiqueta" for="cpf">CPF</label>
+                <input name="cpf" id="cpf" type="cpf" class="campo__escrita" required />
+                <div id="erroCPF"></div>
+            </div>
+
 
             <h3 class="principal__subtitulo">Endereço</h3>
 
@@ -250,7 +261,8 @@
         </ul>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
+    <script src="apisKeys.js" type="module"></script>
 </body>
 
 </html>
