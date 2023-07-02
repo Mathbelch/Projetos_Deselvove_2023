@@ -1,5 +1,4 @@
-import getApiKey from './apisKeys.js';
-import checkCpf from 'check-cpf';
+import getApiKey from './keys.js';
 
 // Definindo função para validar o nome de usuário:
 function validaName(name) {
@@ -22,7 +21,6 @@ function validaDataNascimento(data) {
    const dataNascimento = new Date(data);
    const dataMais18 = new Date(dataNascimento.getUTCFullYear() + 18, dataNascimento.getUTCMonth(), dataNascimento.getUTCDate());
    const dataAtual = new Date();
-   console.log(dataAtual, dataMais18)
    if (dataMais18 >= dataAtual) {
       mensagemErro.innerHTML = 'Ahhh, não deu certo! É necessário ser maior que 18 anos para se cadastrar :(';
    }
@@ -97,7 +95,6 @@ async function validaEmail(email) {
       }
 
       var consultaMailJson = await consultaMail.json();
-      console.log(consultaMailJson);
 
       if(consultaMailJson.dnsCheck === 'false') { // Ensures that the domain in the email address, eg: gmail.com, is a valid domain.
          mensagemErro.innerHTML = "<p>E-mail inválido. Verifique o domínio de email e tente novamente!</p>"
