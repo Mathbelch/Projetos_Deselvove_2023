@@ -88,3 +88,11 @@
     color: red;
     font-weight: bold;
 }
+
+.inativo {
+    border: 1px solid var(--cinza);
+    background-color: rgb(233, 233, 233);
+    border-radius: 24px;
+    padding: 1em;
+    width: 100%;
+}

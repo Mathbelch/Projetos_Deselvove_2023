@@ -39,8 +39,9 @@ async function validaTelefone(telefone) {
    // Deixando apenas números:
    telefone = telefone.replace(/\D/g, '');
 
-   // verificando se tem a qtde de numero correto:
-   if (!(telefone.length >= 10 && telefone.length <= 11)) {
+   if (telefone === "") {
+      mensagemErro.innerHTML = "É necessário informar seu número de contato";
+   } else if (!(telefone.length >= 10 && telefone.length <= 11)) {
       mensagemErro.innerHTML = "<p>Número de telefone inválido: dígito o número entre 10 (residêncial) e 11 (celular) dígitos, incluindo o DDD.</p>";
       return;
    };
@@ -123,9 +124,49 @@ function validaCPF(CPF) {
    // Puxando elementos HTML:
    var mensagemErro = document.getElementById('erroCPF');
    mensagemErro.innerHTML = "";
-   console.log(checkCpf(CPF))
+   const cpfFormatado = CPF.replace(/\D/g, '');
+   var regex = new RegExp('[0]{11}|[1]{11}|[2]{11}|[3]{11}|[4]{11}|[5]{11}|[6]{11}|[7]{11}|[8]{11}|[9]{11}');
+   const multiplicador = 10;
+   if (cpfFormatado === "") {
+      mensagemErro.innerHTML = "CPF deve ser preenchido";
+   } else if (cpfFormatado.length !== 11) {
+      mensagemErro.innerHTML = "Ops, parece que o CPF informado não possui 11 dígitos numéricos. Verifique e tente novamente.";
+   } else if (regex.test(cpfFormatado)) {
+      mensagemErro.innerHTML = "<p>O CPF não deve ter seus dígitos iguais. Revise e tente novamente</p>";
+   } else if (!checaDigitoVerificador(cpfFormatado, multiplicador)) {
+      mensagemErro.innerHTML = "<p>CPF inválido. Tente novamente.</p>"
+   };
 };
-// Vamos chamar a função assíncrona de comunicação com a API quando o campo de contato no HTML for preenchido e for clicado fora desse campo:
+
+// Calculo matemático: para o 1° digito verificador, somar os 9 primeiros dígitos multiplicados de 10 até 2 (10 * 1°) + (9 * 2°) + (8 * 3°) + ... + (2 * 9°) e aplicar a fórmula em confirma dígito. Para o 2° digito multipicador, somar os 10 primeiros dígitos multiplicados de 11 até 2 (11 * 1°) + (10 * 2°) + (9 * 3°) + ... + (3 * 10°), e aplicar na fórmula confirma dígito:
+function checaDigitoVerificador(cpf, multiplicador) {
+	if(multiplicador >= 12) {
+		return true;
+	};
+	let multiplicadorInicial = multiplicador;
+	let soma = 0;
+	const cpfSemDigitos = cpf.substr (0, multiplicador - 1).split('');
+	const digitoVerificador = cpf.charAt(multiplicador - 1);
+
+	for(let contador = 0; multiplicadorInicial > 1; multiplicadorInicial--) {
+		soma = soma + cpfSemDigitos[contador] * multiplicadorInicial;
+		contador++;
+	}
+
+	// Se o 1° dígito estiver correto, chamamos recursivamente a função para o 2° dígito verificador:
+	if(digitoVerificador == confirmaDigito(soma)) {
+		return checaDigitoVerificador(cpf, multiplicador + 1);
+	};
+
+	return false;
+
+};
+
+function confirmaDigito(soma) {
+	return (11 - (soma % 11));
+};
+
+// Vamos chamar a função assíncrona de comunicação com a API quando o campo de cpf no HTML for preenchido e for clicado fora desse campo:
 var cpf = document.getElementById('cpf');
 cpf.addEventListener("focusout", () => validaCPF(cpf.value));
 
@@ -139,6 +180,14 @@ async function buscaEndereco(cep) {
    var logradouro = document.getElementById('endereco');
    var estado = document.getElementById('estado');
    var bairro = document.getElementById('bairro');
+
+   if(cep === "") {
+      mensagemErro.innerHTML = "<p>Informe seu CEP para continuar.</p>"
+      return;
+   }
+
+   cep = cep.replace(/\D/g, '');
+
    // Comunicação com a API, conversando da resposta para Json e preenchimento dinâmico dos elementos HTML:
    try {
       var consultaCEP = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
@@ -157,7 +206,7 @@ async function buscaEndereco(cep) {
    // Caso a Promisse seja rejeitada, podemos ter um Erro por digitação ou então um CEP não encontrado:
    } catch (erro) {
       if (erro.name == 'TypeError') {
-         mensagemErro.innerHTML = "<p>CEP inválido. Dígite seu CEP com 8 dígitos e sem símbolos ou pontos!</p>"
+         mensagemErro.innerHTML = "<p>CEP inválido. Dígite seu CEP com 8 dígitos!</p>"
       } else {
          mensagemErro.innerHTML = "<p>CEP não encontrado. Tente novamente!</p>"
       }
@@ -169,7 +218,6 @@ async function buscaEndereco(cep) {
       console.log(erro);
    };
 };
-
 // Vamos chamar a função assíncrona de comunicação com a API 
 var cep = document.getElementById('cep');
 cep.addEventListener("focusout", () => buscaEndereco(cep.value));

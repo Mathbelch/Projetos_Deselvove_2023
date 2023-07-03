@@ -97,12 +97,12 @@
             <div id="erroCel"></div>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="email">E-mail</label>
-                <input name="email" id="email" type="email" class="campo__escrita" required />
+                <input name="email" id="email" type="email" class="campo__escrita" placeholder="exemplo@mail.com" required />
                 <div id="erroMail"></div>
             </div>
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="cpf">CPF</label>
-                <input name="cpf" id="cpf" type="cpf" class="campo__escrita" required />
+                <input name="cpf" id="cpf" type="cpf" class="campo__escrita" placeholder="Informe seu CPF" required />
                 <div id="erroCPF"></div>
             </div>
 
@@ -111,13 +111,29 @@
 
             <div class="formulario__campo">
                 <label class="campo__etiqueta" for="cep">CEP</label>
-                <input name="cep" id="cep" class="campo__escrita" required />
+                <input name="cep" id="cep" class="campo__escrita" placeholder="Informe seu CEP" required />
                 <div id="erro"></div>
             </div>
 
             <div class="formulario__campo">
-                <label class="campo__etiqueta" for="endereco">Endereço</label>
-                <input name="endereco" id="endereco" class="campo__escrita" required />
+                <label class="campo__etiqueta" for="endereco" >Endereço</label>
+                <input name="endereco" id="endereco" class="inativo" required readonly/>
+            </div>
+            
+            <div class="formulario__campo">
+                <label class="campo__etiqueta" for="bairro">Bairro</label>
+                <input name="bairro" id="bairro" class="inativo" required readonly/>
+            </div>
+            <div class="formulario__dupla">
+                <div class="formulario__campo">
+                    <label class="campo__etiqueta" for="cidade">Cidade</label>
+                    <input name="cidade" id="cidade" class="inativo" required readonly/>
+                </div>
+
+                <div class="formulario__campo">
+                    <label class="campo__etiqueta" for="estado">UF</label>
+                    <input id="estado" name="estado" class="inativo" required readonly/>
+                </div>
             </div>
             <div class="formulario__dupla">
                 <div class="formulario__campo">
@@ -129,52 +145,6 @@
                     <input name="complemento" id="complemento" class="campo__escrita" />
                 </div>
             </div>
-            <div class="formulario__campo">
-                <label class="campo__etiqueta" for="bairro">Bairro</label>
-                <input name="bairro" id="bairro" class="campo__escrita" required />
-            </div>
-            <div class="formulario__dupla">
-                <div class="formulario__campo">
-                    <label class="campo__etiqueta" for="cidade">Cidade</label>
-                    <input name="cidade" id="cidade" class="campo__escrita" required />
-                </div>
-
-                <div class="formulario__campo">
-                    <label class="campo__etiqueta" for="estado">UF</label>
-                    <select id="estado" name="estado" class="campo__escrita">
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                        <option value="EX">Estrangeiro</option>
-                    </select>
-                </div>
-
-            </div>
-
 
             <input type="submit" value="Enviar formulário" class="formulario__botao" id="enviar">
         </form>
@@ -262,7 +232,7 @@
     </footer>
 
     <script src="script.js" type="module"></script>
-    <script src="apisKeys.js" type="module"></script>
+    <script src="keys.js" type="module"></script>
 </body>
 
 </html>
