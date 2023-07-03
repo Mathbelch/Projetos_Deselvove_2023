@@ -1,7 +1,7 @@
 # Projeto Formulário Alura Books
 
 ## Objetivo: 
-Aplicar validação de formulário na página de cadastro da empresa fícticia Alura Books, de forma a se garantir a obtenção de dados padronizados para posterior inclusão no Banco de Dados. As validações foram feitas tanto no html para não permitir a submissão de dados fora do padrão, quanto em script.js para exibir mensagens de erro ao usuário em tempo real. Além disso ultilizou-se conceitos JS (Regex, fetch, assync/await, try/catch) para validações e comunicações com diferentes APIs (Brasil API, Who is - Email Verification API,  );
+Aplicar validação de formulário na página de cadastro da empresa fícticia Alura Books, de forma a se garantir a obtenção de dados padronizados para posterior inclusão no banco de dados, além de melhorar a usabilidade da página por meio da exibição de mensagens de erro claras ao usuário em tempo real. Para isso ultilizou-se de diversos conceitos JS (Regex, fetch, assync/await, try/catch, modules) para validações e comunicações com diferentes APIs (Brasil API, Who is - Email Verification API, Via CEP);
 
 ## Requisitos do Projeto:
 
@@ -10,15 +10,16 @@ Aplicar validação de formulário na página de cadastro da empresa fícticia A
    <li>O campo de nome completo deve contér ao menos duas palavras (nome e sobrenome), e apenas usuários maiores de idade podem se inscrever;</li>
    <li>O usuário deve fornecer telefone de contato e e-mail válidos;</li>
    <li>O CPF do usuário deve ser válidado com relação ao dígito verificador, mas outros erros podem ser informados ao usuário para melhorar a usabilidade;</li>
-   <li>;</li>
+   <li>Na parte de endereço, apenas os campos de CEP, número e complemento devem permitir o preenchimento pelo usuário, sendo que os demais campos devem ser preenchidos automáticamente por meio de consulta do CEP informado;</li>
 </ul>
 
 ## Estrutura do projeto:
 <ul>
    <li><i>index.html</i>: Página HTML do formulário de cadastro, sendo que ao ser submetido (botão) ocorre o redirecionamento para a página cadastro-finalizado.html ;</li>
-   <li><i>script.js</i>: Contém o código JS das diferentes funções de validações criadas;</li>
-   <li><i>img</i>: Contém as imagens exibidas na página HTML;</li>
-   <li><i>styles</i>: Contém os arquivos css da página, organizados por componente;</li>
+   <li><i>script.js</i>: Contém o código JS responsável por obter os elementos de input do formulário e chamar as diferentes funções de validações criadas;</li>
+   <li><i>/Validadores</i>: Contém os arquivos JS das funções de validação para cada elemento de input do fomulário;
+   <li><i>/img</i>: Contém as imagens exibidas na página HTML;</li>
+   <li><i>/styles</i>: Contém os arquivos css da página, organizados por componente;</li>
 </ul>
 
 
@@ -33,8 +34,5 @@ Aplicar validação de formulário na página de cadastro da empresa fícticia A
       <small>* Para o 1° digito verificador, somamos os 9 primeiros dígitos multiplicados de 10 até 2 (10 * 1°) + (9 * 2°) + (8 * 3°) + ... + (2 * 9°) e aplicamos a fórmula em confirma dígito. Para o 2° digito multipicador, somamos os 10 primeiros dígitos multiplicados de 11 até 2 (11 * 1°) + (10 * 2°) + (9 * 3°) + ... + (3 * 10°), e aplicamos na fórmula confirma dígito.</small>
       <li><b>Endereço:</b> A validação do CEP foi feita pela pela consulta na API <a href="https://viacep.com.br/" alt="_blank"> <i>Via CEP</i></a>, já buscando e preenchendo as informações dos demais campos de endereço (exceto número e complemento);</li>
    </ul>
-
-
-## Comunicação com APIs:
 
 ## Versão Final da Página:
