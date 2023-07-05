@@ -1,22 +1,22 @@
 import IPrato from '../../../interfaces/IPrato';
-import estilos from './Prato.module.scss';
+import styles from './Prato.module.scss';
 
 interface PratoProps {
   prato: IPrato
 }
 
 const Prato = ({ prato }: PratoProps) => {
-  return (<div className={estilos.Prato}>
-    <div className={estilos.Container}>
+  return (<div className={styles.Prato}>
+    <div className={styles.Container}>
       <div>
-        <div className={estilos.EfeitoTorcao}>
+        <div className={styles.EfeitoTorcao}>
           <img src={prato.imagem} alt={prato.descricao}/>
         </div>
       </div>
     </div>
-    <div className={estilos.Conteudo}>
+    <div className={styles.Conteudo}>
       <h3>{prato.nome}</h3>
-      <div className={estilos.Tag}>
+      <div className={styles.Tag}>
         {prato.tag}
       </div>
       <div>
