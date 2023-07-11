@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import IRestaurante from "../../../interfaces/IRestaurante";
@@ -38,20 +38,21 @@ const FormRestaurante = () => {
    }
 
    return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 5 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
          <Typography component="h1" variant="h6">Formulário de Restaurantes</Typography>
-         <Box component='form' onSubmit={onSubmitForm}>
-            <TextField 
+         <Box component='form' sx={{ width: '100%' }} onSubmit={onSubmitForm}>
+            <TextField
                value={nomeRestaurante}
                onChange={event => setNomeRestaurante(event.target.value)}
                label="Nome do Restaurante"
-               variant="standard" 
+               variant="standard"
                fullWidth
                required
             />
             <Button sx={{ marginTop: 1 }} type="submit" variant="outlined" fullWidth>Salvar</Button>
          </Box>
       </Box>
+
    )
 }
 
