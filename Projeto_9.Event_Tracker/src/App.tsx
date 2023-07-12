@@ -64,7 +64,7 @@ function App() {
   return (
     <RecoilRoot>
       <div className={style.App}>
-        <div className={style.Coluna}>
+        <div className={style.Coluna} style={{ overflowY: 'scroll'}}>
           <Card>
             <Formulario />
           </Card>
