@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import http from "../../../http";
 import ITag from "../../../interfaces/ITag";
 import IRestaurante from "../../../interfaces/IRestaurante";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import IPrato from "../../../interfaces/IPrato";
 
 const FormPrato = () => {
+
+   const params = useParams();
+   const navigate = useNavigate();
 
    const [nomePrato, setNomePrato] = useState('');
    const [descricaoPrato, setDescricaoPrato] = useState('');
@@ -26,6 +29,21 @@ const FormPrato = () => {
          .then(resposta => setRestaurantes(resposta.data))
    }, [])
 
+   useEffect(() => {
+      if (params.id) {
+         http.get<IPrato>(`pratos/${params.id}/`)
+         .then(resposta => {
+            setNomePrato(resposta.data.nome);
+            setDescricaoPrato(resposta.data.descricao);
+            setTag(resposta.data.tag);
+            setRestaurante(resposta.data.restaurante.toString());
+            if (resposta.data.imagem) {
+               
+            }
+         })
+      }
+    }, [params])
+
    const selecionarArquivo = (evento: React.ChangeEvent<HTMLInputElement>) => {
       if (evento.target.files?.length) {
          setImagem(evento.target.files[0])
@@ -35,6 +53,7 @@ const FormPrato = () => {
    }
 
    const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
+      let message;
       event.preventDefault();
       const formData = new FormData();
       formData.append('nome', nomePrato);
@@ -44,14 +63,34 @@ const FormPrato = () => {
       if (imagem) {
          formData.append('imagem', imagem)
       }
-      http.request({
-         url: 'pratos/',
-         method: 'POST',
-         headers: {
-            'Content-Type': 'multipart/form-data'
-         },
-         data: formData
-      })
+      if (params.id) {
+         http.request({
+            url: `pratos/${params.id}/`,
+            method: 'PUT',
+            headers: {
+               'Content-Type': 'multipart/form-data'
+            },
+            data: formData
+         })
+            .then(() => {
+               setNomePrato('');
+               setDescricaoPrato('');
+               setTag('');
+               setRestaurante('');
+               setImagem(null);
+               alert('Prato atualizado com sucesso!');
+               navigate('/admin/pratos')
+            })
+            .catch(erro => console.log(erro))
+      } else {
+         http.request({
+            url: 'pratos/',
+            method: 'POST',
+            headers: {
+               'Content-Type': 'multipart/form-data'
+            },
+            data: formData
+         })
          .then(() => {
             setNomePrato('');
             setDescricaoPrato('');
@@ -61,6 +100,7 @@ const FormPrato = () => {
             alert('Prato cadastrado com sucesso!');
          })
          .catch(erro => console.log(erro))
+      }
    }
 
    return (
