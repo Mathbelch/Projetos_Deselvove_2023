@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
-import { IEvento } from '../../interfaces/IEvento';
 import style from './Formulario.module.scss';
+import { obterId } from '../../util';
+import { IEvento } from '../../interfaces/IEvento';
+import { useSetRecoilState } from 'recoil';
+import { listaEventosState } from '../../state/atom';
 
-const Formulario: React.FC<{ aoSalvar: (evento: IEvento) => void }> = ({ aoSalvar }) => {
-  const [descricao, setDescricao] = useState('')
-  const [dataInicio, setDataInicio] = useState('')
-  const [horaInicio, setHoraInicio] = useState('')
-  const [dataFim, setDataFim] = useState('')
-  const [horaFim, setHoraFim] = useState('')
+const Formulario: React.FC = () => {
+
+  const setListaEventos = useSetRecoilState<IEvento[]>(listaEventosState);
+
+  const [descricao, setDescricao] = useState('');
+  const [dataInicio, setDataInicio] = useState('');
+  const [horaInicio, setHoraInicio] = useState('');
+  const [dataFim, setDataFim] = useState('');
+  const [horaFim, setHoraFim] = useState('');
 
   const montarData = (data:string, hora: string) => {
-    const dataString = data.slice(0, 10)
-    return new Date(`${dataString}T${hora}`)
-  }
+    const dataString = data.slice(0, 10);
+    return new Date(`${dataString}T${hora}`);
+  };
 
   const submeterForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    aoSalvar({
+    const evento = ({
+      id: obterId(),
       descricao,
       inicio: montarData(dataInicio, horaInicio),
       fim: montarData(dataFim, horaFim),
       completo: false
     })
-    setDescricao('')
-    setDataInicio('')
-    setHoraInicio('')
-    setDataFim('')
-    setHoraFim('')
+    setListaEventos(listaAntiga => [...listaAntiga, evento]);
+    setDescricao('');
+    setDataInicio('');
+    setHoraInicio('');
+    setDataFim('');
+    setHoraFim('');
   }
   return (<form className={style.Formulario} onSubmit={submeterForm}>
     <h3 className={style.titulo}>Novo evento</h3>
