@@ -4,6 +4,8 @@ import VitrineRestaurantes from './paginas/VitrineRestaurantes';
 import FormRestaurante from './paginas/Admin/Restaurantes/FormRestaurante';
 import AdminRestaurantes from './paginas/Admin/Restaurantes/adminRestaurantes';
 import PaginaBaseAdmin from './paginas/Admin/PaginaBaseAdmin';
+import AdminPratos from './paginas/Admin/Pratos/adminPratos';
+import FormPrato from './paginas/Admin/Pratos/FormPrato';
 
 function App() {
 
@@ -17,6 +19,11 @@ function App() {
         <Route path="restaurantes" element={<AdminRestaurantes />} />
         <Route path="restaurantes/novo" element={<FormRestaurante />} />
         <Route path="restaurantes/:id" element={<FormRestaurante />} />
+
+        <Route path="pratos" element={<AdminPratos />} />
+        <Route path="pratos/novo" element={<FormPrato />} />
+        <Route path="pratos/:id" element={<FormPrato />} />
+        
       </Route>
 
     </Routes>
