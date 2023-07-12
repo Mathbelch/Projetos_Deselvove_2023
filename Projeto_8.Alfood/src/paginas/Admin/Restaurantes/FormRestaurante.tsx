@@ -25,6 +25,7 @@ const FormRestaurante = () => {
             nome: nomeRestaurante
          })
             .then(() => {
+               setNomeRestaurante('');
                alert('Restaurante atualizado com sucesso')
             })
       } else {
@@ -32,6 +33,7 @@ const FormRestaurante = () => {
             nome: nomeRestaurante
          })
             .then(() => {
+               setNomeRestaurante('');
                alert('Restaurante cadastrado com sucesso')
             })
       }
