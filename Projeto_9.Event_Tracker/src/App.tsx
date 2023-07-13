@@ -71,8 +71,7 @@ function App() {
           <hr />
           <Card>
             <ListaDeEventos 
-            aoFiltroAplicado={aplicarFiltro} 
-            aoAlterarStatus={alterarStatusEvento} />
+            aoFiltroAplicado={aplicarFiltro} />
           </Card>
         </div>
         <div className={style.Coluna}>
