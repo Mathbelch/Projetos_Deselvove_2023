@@ -40,6 +40,8 @@
 ## Versão Final da página:
 <p>De forma geral, em App.tsx não temos mais nenhuma lógica de como lidar com a lista de eventos, condicionar eventos ou deletar eventos, não existe mais essa necessidade de termos tudo definido e sair passando para os componentes filhos por meio de Pops. Então agora, a aplicação está pronta para crescer, porque ela tem mecanismos que defendem o código. Se for necessário alteração, essa será feita de forma bem pontual. Para alterar o método que adiciona, por exemplo, mudamos somente esse Hook. Se for necessário alterar a ferramenta de Recoil para outra, alteramos também somente os hooks e não será necessário ficar procurando todos os componentes que estão acessando o Recoil diretamente.</p>
 
+https://github.com/Mathbelch/Projetos_Deselvove_2023/assets/109366042/83174b65-76e4-47c0-b1da-eb07f4744673
+
 
 
 
