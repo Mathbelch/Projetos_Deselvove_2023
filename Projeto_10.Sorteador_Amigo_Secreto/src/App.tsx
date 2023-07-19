@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Configuracao from "./Pages/Configuracao";
+import Sorteio from "./Pages/Sorteio";
 
 function App() {
    return (
@@ -8,6 +9,7 @@ function App() {
          <RecoilRoot>
             <Routes>
                <Route path='/' element={< Configuracao />}/>
+               <Route path='/sorteio' element={< Sorteio />}/>
             </Routes>
          </RecoilRoot>
       </BrowserRouter>
