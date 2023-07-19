@@ -22,12 +22,13 @@ const Sorteio = () => {
          <form onSubmit={sortear}>
             <select 
                required 
-               name='participanteDaVez' 
+               name='participanteDaVez'
                id='participanteDaVez' 
                placeholder="Selecione o seu nome"
                value={participanteDaVez}
                onChange={evento => setParticipanteDaVez(evento.target.value)}
             >
+               <option>Selecione seu nome</option>
                {participantes.map(participante => <option key={participante}>{participante}</option>)}
             </select>
             <p>Clique em sortear para ver quem é seu amigo secreto!</p>

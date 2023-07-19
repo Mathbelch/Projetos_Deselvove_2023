@@ -11,7 +11,7 @@ exports[`Pagina de configuracao Deve ser renderizada corretamente 1`] = `
       </h2>
       <form>
         <div
-          class="group-input-btn"
+          class="grupo-input-btn"
         >
           <input
             placeholder="Insira os nomes dos participantes"

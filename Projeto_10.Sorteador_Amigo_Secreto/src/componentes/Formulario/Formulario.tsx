@@ -17,7 +17,7 @@ const Formulario = () => {
 
    return (
       <form onSubmit={adicionarParticipante}>
-         <div className="group-input-btn">
+         <div className="grupo-input-btn">
             <input
                ref={inputRef}
                value={nome}
