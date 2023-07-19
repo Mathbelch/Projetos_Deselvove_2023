@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Router from './routes';
+import Cabecalho from './componentes/Cabecalho/Cabecalho';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Cabecalho />
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-reportWebVitals();
