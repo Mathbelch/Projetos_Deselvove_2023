@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Router from './routes';
+import App from './App';
 import Cabecalho from './componentes/Cabecalho/Cabecalho';
+import Card from './componentes/Card/Card';
 
 ReactDOM.render(
   <React.StrictMode>
     <Cabecalho />
-    <Router />
+    <Card />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
