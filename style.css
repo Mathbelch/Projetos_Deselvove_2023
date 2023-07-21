@@ -3,7 +3,6 @@ body {
 }
 
 footer {
-   color:#C0C0C0;
    font-size: 0.75em;
    text-align: center;
    font-style: italic;
@@ -30,7 +29,7 @@ ul {
 
 li {
    padding-bottom: 1em;
-   align: center;
+   align-items: center;
 }
 
 .but {
@@ -61,4 +60,13 @@ li {
 p {
    color: white;
    padding-right: 10em;
+}
+
+@media(max-width: 800px) {
+   ul {
+      padding-left: 2em;
+   }
+   p {
+      padding-right: 1em;
+   }
 }
